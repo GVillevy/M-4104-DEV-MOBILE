@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="pokeworld.Pages.DescriptionPage">
+    <ContentPage.Content>
+        <StackLayout Margin="20,0,20,20">
+
+            <Frame BorderColor="#931F21"
+                    BackgroundColor="{Binding BackgroundColor}"
+                    HasShadow="False"
+                    Margin="10"
+                    CornerRadius="10">
+                <Grid RowSpacing="10" ColumnSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        TextColor="#FFFFFF"
+                    >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="ID : "/>
+                                <Span Text="{Binding Id}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        TextColor="#FFFFFF"
+                    >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Nom : "/>
+                                <Span Text="{Binding Name}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    
+                    <Image HeightRequest="20"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="1"
+                            Source="{Binding Image}"
+                            Scale="2">
+                    </Image>
+                    
+                   
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        FontAttributes="None"
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        TextColor="#FFFFFF"
+                    >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Taille : "/>
+                                <Span Text="{Binding Height}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        FontAttributes="None"
+                        FontSize="Medium"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        TextColor="#FFFFFF"
+                    >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Taille : "/>
+                                <Span Text="{Binding Weight}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid>
+            </Frame>
+            <Label>tEST / </Label>
+            <Image Source="{Binding Type1}"></Image>
+            <Image Source="{Binding Type2}"></Image>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

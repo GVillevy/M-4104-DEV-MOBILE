@@ -1,0 +1,19 @@
+﻿<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:pokeworld.Pages"
+       x:Class="pokeworld.AppShell">
+    <TabBar>
+        <Tab Title="Acceuil"
+            Icon="acceuil_logo.png">
+            <views:HomePage/>
+        </Tab>
+        <Tab Title="Ajout"
+            Icon="ajout_logo.png">
+            <views:AddPage/>
+        </Tab>
+        <Tab Title="Liste"
+            Icon="liste_logo.png">
+            <views:ListPage/>
+        </Tab>
+    </TabBar>
+</Shell>

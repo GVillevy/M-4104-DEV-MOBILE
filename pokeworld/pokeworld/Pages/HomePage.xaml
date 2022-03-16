@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="pokeworld.Pages.HomePage">
+    <ContentPage.Content>
+        <FlexLayout AlignContent="Center" 
+                    Direction="Column"
+                    JustifyContent="SpaceEvenly">
+            <Label FontSize="25" HorizontalTextAlignment="Center">Bienvenue !</Label>
+            <Image Source="logo.png" />
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

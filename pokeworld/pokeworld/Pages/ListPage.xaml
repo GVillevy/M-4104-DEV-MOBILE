@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="pokeworld.Pages.ListPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+
+
+            <Label Text="Pokelist"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView
+            x:Name="ListOfPokemon"
+            VerticalOptions="FillAndExpand"
+            BindingContext="{Binding PokemonList}"
+            RowHeight="100"
+            ItemTapped="OnClick"
+            SelectedItem="{Binding SelectedPokemon}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <FlexLayout Direction="Row" AlignItems="Center" Wrap="NoWrap" JustifyContent="SpaceBetween" >
+                                <Grid
+                                    BackgroundColor="{Binding BackgroundColor}"
+                                >
+                                    
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*" />
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="140" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    
+                                    <Image Source="{Binding Image}" 
+                                           WidthRequest="110" 
+                                           HeightRequest="110"
+                                           Aspect="AspectFit"
+                                           Grid.Column="0"
+                                           Grid.Row="0"
+                                           Grid.RowSpan="2">
+
+                                    </Image>
+
+                                    <FlexLayout
+                                        Direction="Column" 
+                                        JustifyContent="Center"
+                                        AlignItems="Start"
+                                        Grid.Column="1"
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                       
+                                        >
+                                        
+                                        <Label
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            FontAttributes="None"
+                                            FontSize="Medium">
+
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="ID : "/>
+                                                    <Span Text="{Binding Id}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Label
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            FontAttributes="None"
+                                            FontSize="Medium"
+                                            >
+
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Nom : "/>
+                                                    <Span Text="{Binding Name}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                    </FlexLayout>
+
+                                    <FlexLayout
+                                        Direction="Column"
+                                        AlignContent="Center"
+                                        Grid.Column="2"
+                                   
+                                    >
+                                        
+                                        <Image Source="{Binding Type1}" 
+                                           Grid.Column="2"
+                                           Grid.Row="0"
+                                           WidthRequest="40" 
+                                           HeightRequest="30"
+                                           Aspect="AspectFit"
+                                               
+
+                                        ></Image>
+                                        
+                                        <Image Source="{Binding Types2}" 
+                                           Grid.Column="2"
+                                           Grid.Row="1"
+                                           WidthRequest="40" 
+                                           HeightRequest="30"
+                                           Aspect="AspectFit"
+                                         ></Image>
+                                    </FlexLayout>
+                                </Grid>
+                            </FlexLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
