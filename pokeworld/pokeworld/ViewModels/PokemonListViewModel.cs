@@ -50,6 +50,13 @@ namespace pokeworld.ViewModels
         {
 
             PokeApiClient pokeClient = new PokeApiClient();
+            nbrPokeDatabase = await App.Database.connection.Table<PokemonModel>().CountAsync();
+
+            for (var i = 0; i < nbrPokeDatabase; i++)
+            {
+                myPokemon = await App.Database.connection.Table<PokemonModel>().ElementAtAsync(i);
+                PokemonsList.Add(myPokemon);
+            }
 
             for (int i = 1; i < 10; i++)
             {
@@ -78,18 +85,6 @@ namespace pokeworld.ViewModels
                 }
                 PokemonsList.Add(myPokemon);
             }
-
-
-
-            nbrPokeDatabase = await App.Database.connection.Table<PokemonModel>().CountAsync();
-
-            for (var i = 0; i < nbrPokeDatabase; i++)
-            {
-                myPokemon = await App.Database.connection.Table<PokemonModel>().ElementAtAsync(i);
-                PokemonsList.Add(myPokemon);
-            }
-
-
         }
 
 

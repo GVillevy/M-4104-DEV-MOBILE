@@ -35,7 +35,16 @@ namespace pokeworld.Pages
             PokemonListViewModel.Instance.PokemonsList.Insert(0, pokemon);
 
             await App.Database.connection.InsertAsync(pokemon);
+            await DisplayAlert("Succès", $"Pokémon : {pokemon.Name} ajouté !", "Ok");
 
+
+            nomPokemon.Text = nomPokemon.Text = string.Empty;
+            selectionImage.Source = "ajout.png";
+            selectedImagePath = null;
+            type1Pokemon.Text = null;
+            type2Pokemon.Text = null;
+            heightPokemon.Text = null;
+            weightPokemon.Text = null;
         }
 
         async void Handle_Clicked(object sender, System.EventArgs e)
@@ -64,8 +73,5 @@ namespace pokeworld.Pages
             selectionImage.Source = ImageSource.FromStream(() => selectedImageFile.GetStream());
             selectedImagePath = selectedImageFile.Path;
         }
-
     }
-
-
 }

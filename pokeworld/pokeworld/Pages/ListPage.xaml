@@ -5,11 +5,6 @@
 
     <ContentPage.Content>
         <StackLayout>
-
-
-            <Label Text="Pokelist"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
             <ListView
             x:Name="ListOfPokemon"
             VerticalOptions="FillAndExpand"

@@ -4,15 +4,15 @@
        x:Class="pokeworld.AppShell">
     <TabBar>
         <Tab Title="Acceuil"
-            Icon="acceuil_logo.png">
+            Icon="home.png">
             <views:HomePage/>
         </Tab>
         <Tab Title="Ajout"
-            Icon="ajout_logo.png">
+            Icon="ajout.png">
             <views:AddPage/>
         </Tab>
         <Tab Title="Liste"
-            Icon="liste_logo.png">
+            Icon="liste.png">
             <views:ListPage/>
         </Tab>
     </TabBar>
