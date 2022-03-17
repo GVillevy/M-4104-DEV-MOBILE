@@ -11,11 +11,13 @@ namespace pokeworld.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
+        public string TypeImg1 { get; set; }
+        public string TypeImg2 { get; set; }
         public string Type1 { get; set; }
         public string Type2 { get; set; }
         public int Height { get; set; }
         public int Weight { get; set; }
-        public string BackgroundColor { get; set; }
+        public string BackgroundColorByType { get; set; }
 
 
     }

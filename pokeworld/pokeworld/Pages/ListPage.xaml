@@ -3,116 +3,74 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="pokeworld.Pages.ListPage">
 
+    <ContentPage.Resources>
+        <Style TargetType="FlexLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="{Binding BackgroundColorByType}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <ListView
+        <CollectionView 
             x:Name="ListOfPokemon"
-            VerticalOptions="FillAndExpand"
             BindingContext="{Binding PokemonList}"
-            RowHeight="100"
-            ItemTapped="OnClick"
-            SelectedItem="{Binding SelectedPokemon}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <FlexLayout Direction="Row" AlignItems="Center" Wrap="NoWrap" JustifyContent="SpaceBetween" >
-                                <Grid
-                                    BackgroundColor="{Binding BackgroundColor}"
-                                >
-                                    
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*" />
-                                        <RowDefinition Height="1*"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="140" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
+            SelectedItem="{Binding SelectedPokemon}"
+            SelectionMode="Single"
+            SelectionChanged="OnClick"
+            ItemsLayout="VerticalGrid, 3"
+            VerticalScrollBarVisibility="Always"
+            >
 
-                                    
-                                    <Image Source="{Binding Image}" 
-                                           WidthRequest="110" 
-                                           HeightRequest="110"
-                                           Aspect="AspectFit"
-                                           Grid.Column="0"
-                                           Grid.Row="0"
-                                           Grid.RowSpan="2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <FlexLayout 
+                            Direction="Column"
+                            AlignItems="Center"
+                            Wrap="NoWrap"
+                            Padding="0,0,0,15"
+                            >
+                        
+                        <Label
+                            Padding="0,0,0,-5"
+                        >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="ID " FontAttributes="Bold" FontSize="13"/>
+                                    <Span Text="{Binding Id}" FontAttributes="Bold" FontSize="Large"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
 
-                                    </Image>
 
-                                    <FlexLayout
-                                        Direction="Column" 
-                                        JustifyContent="Center"
-                                        AlignItems="Start"
-                                        Grid.Column="1"
-                                        Grid.Row="0"
-                                        Grid.RowSpan="2"
-                                       
-                                        >
-                                        
-                                        <Label
-                                            Grid.Column="1"
-                                            Grid.Row="0"
-                                            FontAttributes="None"
-                                            FontSize="Medium">
+                        <Image 
+                               Source="{Binding Image}"
+                               WidthRequest="80"
+                               HeightRequest="80"
+                                Aspect="AspectFit"
+                                />
 
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="ID : "/>
-                                                    <Span Text="{Binding Id}"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
+                        <Label 
+                               Text="{Binding Name}"
+                               FontAttributes="Bold"
+                               FontSize="Large"
+                               Padding="0,-5,0,0"
+                            />
+                    </FlexLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
-                                        <Label
-                                            Grid.Column="1"
-                                            Grid.Row="1"
-                                            FontAttributes="None"
-                                            FontSize="Medium"
-                                            >
-
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="Nom : "/>
-                                                    <Span Text="{Binding Name}"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-
-                                    </FlexLayout>
-
-                                    <FlexLayout
-                                        Direction="Column"
-                                        AlignContent="Center"
-                                        Grid.Column="2"
-                                   
-                                    >
-                                        
-                                        <Image Source="{Binding Type1}" 
-                                           Grid.Column="2"
-                                           Grid.Row="0"
-                                           WidthRequest="40" 
-                                           HeightRequest="30"
-                                           Aspect="AspectFit"
-                                               
-
-                                        ></Image>
-                                        
-                                        <Image Source="{Binding Types2}" 
-                                           Grid.Column="2"
-                                           Grid.Row="1"
-                                           WidthRequest="40" 
-                                           HeightRequest="30"
-                                           Aspect="AspectFit"
-                                         ></Image>
-                                    </FlexLayout>
-                                </Grid>
-                            </FlexLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+

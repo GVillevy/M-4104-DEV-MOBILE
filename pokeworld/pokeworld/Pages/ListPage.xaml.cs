@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using pokeworld.Models;
 using pokeworld.Pages;
 using pokeworld.ViewModels;
@@ -20,11 +21,11 @@ namespace pokeworld.Pages
             BindingContext = PokemonListViewModel.Instance;
 
         }
-        void OnClick(object sender, ItemTappedEventArgs e)
+        public void OnClick(object sender, SelectionChangedEventArgs e)
         {
-            PokemonModel current = (e.Item as PokemonModel);
+            PokemonModel current = e.CurrentSelection.FirstOrDefault() as PokemonModel;
             Navigation.PushAsync(new DescriptionPage(current));
-            Console.WriteLine(current.Name);
+            // Console.WriteLine(current.Name);
         }
     }
 }

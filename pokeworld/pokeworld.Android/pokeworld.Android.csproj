@@ -97,12 +97,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\bug.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\dark.png" />
   </ItemGroup>
   <ItemGroup>
@@ -136,16 +130,19 @@
     <AndroidResource Include="Resources\drawable\ice.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
     <AndroidResource Include="Resources\drawable\normal.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\poison.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\rock.png" />
+    <AndroidResource Include="Resources\drawable\psychic.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\spychic.png" />
+    <AndroidResource Include="Resources\drawable\rock.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\steel.png" />
@@ -154,13 +151,7 @@
     <AndroidResource Include="Resources\drawable\water.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ajout.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\liste.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\home.png" />
+    <AndroidResource Include="Resources\drawable\bug.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>

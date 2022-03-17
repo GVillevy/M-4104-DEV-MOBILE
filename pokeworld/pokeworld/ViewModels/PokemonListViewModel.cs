@@ -9,9 +9,6 @@ using Xamarin.Forms;
 
 namespace pokeworld.ViewModels
 {
-
-
-
     class PokemonListViewModel : BaseViewModel
     {
 
@@ -21,31 +18,16 @@ namespace pokeworld.ViewModels
         private int nbType;
         public int nbrPokeDatabase = 0;
 
-
-
-
         public ObservableCollection<PokemonModel> PokemonsList
         {
             get { return GetValue<ObservableCollection<PokemonModel>>(); }
             set { SetValue(value); }
         }
-
-
-
-
         public PokemonListViewModel()
         {
             PokemonsList = new ObservableCollection<PokemonModel>();
             GetPokemonList();
         }
-
-
-
-
-
-
-
-
         public async void GetPokemonList()
         {
 
@@ -58,7 +40,7 @@ namespace pokeworld.ViewModels
                 PokemonsList.Add(myPokemon);
             }
 
-            for (int i = 1; i < 10; i++)
+            for (int i = 1; i < 15; i++)
             {
                 Pokemon pokemon = await Task.Run(() => pokeClient.GetResourceAsync<Pokemon>(i));
                 nbType = pokemon.Types.Count;
@@ -70,42 +52,21 @@ namespace pokeworld.ViewModels
                     Image = pokemon.Sprites.FrontDefault,
                     Weight = pokemon.Weight,
                     Height = pokemon.Height,
-                    BackgroundColor = getBackgroundColorByType(pokemon.Types[0].Type.Name),
+                    BackgroundColorByType = getBackgroundColorByType(pokemon.Types[0].Type.Name),
+                    TypeImg1 = getImageByType(pokemon.Types[0].Type.Name),
+                    Type1 = pokemon.Types[0].Type.Name
                 };
 
-
-                if (nbType == 1)
+                if (nbType == 2)
                 {
-                    myPokemon.Type1 = getImageByType(pokemon.Types[0].Type.Name);
+                    myPokemon.TypeImg2 = getImageByType(pokemon.Types[1].Type.Name);
+                    myPokemon.Type2 = pokemon.Types[1].Type.Name;
                 }
-                else
-                {
-                    myPokemon.Type1 = getImageByType(pokemon.Types[0].Type.Name);
-                    myPokemon.Type2 = getImageByType(pokemon.Types[1].Type.Name);
-                }
+                  
+                
                 PokemonsList.Add(myPokemon);
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public string getBackgroundColorByType(string Type)
         {
             switch (Type)
@@ -131,7 +92,6 @@ namespace pokeworld.ViewModels
                 default: return "#FFFFFF";
             }
         }
-
         public string getImageByType(string Type)
         {
             switch (Type)
