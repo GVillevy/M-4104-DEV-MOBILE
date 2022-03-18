@@ -37,6 +37,14 @@ namespace pokeworld.ViewModels
             for (var i = 0; i < nbrPokeDatabase; i++)
             {
                 myPokemon = await App.Database.connection.Table<PokemonModel>().ElementAtAsync(i);
+                if (!String.IsNullOrEmpty(myPokemon.Type1))
+                {
+                    myPokemon.TypeImg1 = getImageByType(myPokemon.Type1);
+                }
+                if (!String.IsNullOrEmpty(myPokemon.Type2))
+                {
+                    myPokemon.TypeImg2 = getImageByType(myPokemon.Type2);
+                }
                 PokemonsList.Add(myPokemon);
             }
 

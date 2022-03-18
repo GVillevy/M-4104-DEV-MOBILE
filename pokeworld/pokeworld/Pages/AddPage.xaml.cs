@@ -32,6 +32,15 @@ namespace pokeworld.Pages
                 Weight = Int16.Parse(weightPokemon.Text),
             };
 
+            if (!String.IsNullOrEmpty(pokemon.Type1))
+            {
+                pokemon.TypeImg1 = PokemonListViewModel.Instance.getImageByType(pokemon.Type1);
+            }
+            if (!String.IsNullOrEmpty(pokemon.Type2))
+            {
+                pokemon.TypeImg2 = PokemonListViewModel.Instance.getImageByType(pokemon.Type2);
+            }
+
             PokemonListViewModel.Instance.PokemonsList.Insert(0, pokemon);
 
             await App.Database.connection.InsertAsync(pokemon);
