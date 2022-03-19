@@ -23,6 +23,5 @@ namespace pokeworld.Models
         public int Speed { get; set; }
         public string BackgroundColorByType { get; set; }
         public bool IsFromApi { get; set; }
-
     }
 }

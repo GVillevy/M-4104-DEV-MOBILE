@@ -59,7 +59,6 @@
                             BackgroundColor="LightGray" 
                             HeightRequest="40" 
                             WidthRequest="1">
-
                         </Rectangle>
 
                         <StackLayout
@@ -111,68 +110,107 @@
                     </FlexLayout>
 
                     <FlexLayout
-                                Direction="Column"
-                                JustifyContent="Start"
-                                Padding="0,10,0,0"
-                       >
+                        Direction="Column"
+                        JustifyContent="Start"
+                        Padding="0,10,0,0">
                         <StackLayout
                             Orientation="Horizontal"
-                            Padding="0,0,0,10"
-                            >
-                            <Label HorizontalOptions="StartAndExpand" >PV</Label>
-
+                            Padding="0,0,0,10">
+                            <Label 
+                                HorizontalOptions="StartAndExpand" 
+                                Text="PV"/>
                             <AbsoluteLayout
                                 HorizontalOptions="Start">
-                                <BoxView AbsoluteLayout.LayoutBounds="0, 0"  HeightRequest="20" WidthRequest="220"  BackgroundColor="LightGray" CornerRadius="16" />
-                                <BoxView AbsoluteLayout.LayoutBounds="0,7.5" HeightRequest="5" WidthRequest="{Binding HP}" BackgroundColor="{Binding BackgroundColorByType}" CornerRadius="16"  />
+                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,0"  
+                                    HeightRequest="20" 
+                                    WidthRequest="220"  
+                                    BackgroundColor="LightGray" 
+                                    CornerRadius="16" />
+                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,7.5" 
+                                    HeightRequest="5" 
+                                    WidthRequest="{Binding HP}" 
+                                    BackgroundColor="{Binding BackgroundColorByType}" 
+                                    CornerRadius="16"  />
                             </AbsoluteLayout>
-                            <Label Text="{Binding HP}"></Label>
-                            
-
+                            <Label 
+                                Text="{Binding HP}"/>
                         </StackLayout>
 
                         <StackLayout
                             Orientation="Horizontal"
-                             Padding="0,0,0,10">
-
-                            <Label HorizontalOptions="StartAndExpand">Attaque</Label>
+                            Padding="0,0,0,10">
+                            <Label 
+                                HorizontalOptions="StartAndExpand"
+                                Text="Attaque"/>
                             <AbsoluteLayout 
-                                HorizontalOptions="Start"
-                                >
-                                <BoxView AbsoluteLayout.LayoutBounds="0, 0"  HeightRequest="20" WidthRequest="220"  BackgroundColor="LightGray" CornerRadius="16" />
-                                <BoxView AbsoluteLayout.LayoutBounds="0,7.5" HeightRequest="5" WidthRequest="{Binding Attack}" BackgroundColor="{Binding BackgroundColorByType}" CornerRadius="16" />
+                                HorizontalOptions="Start">
+                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,0"  
+                                    HeightRequest="20" WidthRequest="220" 
+                                    BackgroundColor="LightGray" 
+                                    CornerRadius="16" />
+                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,7.5" 
+                                    HeightRequest="5" 
+                                    WidthRequest="{Binding Attack}" 
+                                    BackgroundColor="{Binding BackgroundColorByType}" 
+                                    CornerRadius="16" />
                             </AbsoluteLayout>
-                            <Label Text="{Binding Attack}"></Label>
-
-
+                            <Label 
+                                Text="{Binding Attack}"/>
                         </StackLayout>
+
                         <StackLayout
                             Orientation="Horizontal"
                             Padding="0,0,0,10">
-
-                            <Label HorizontalOptions="StartAndExpand"   >Defense</Label>
-                            
-                            <AbsoluteLayout HorizontalOptions="Center">
-                                <BoxView AbsoluteLayout.LayoutBounds="0, 0"  HeightRequest="20" WidthRequest="220"  BackgroundColor="LightGray" CornerRadius="16" />
-                                <BoxView AbsoluteLayout.LayoutBounds="0,7.5" HeightRequest="5" WidthRequest="{Binding Defense}" BackgroundColor="{Binding BackgroundColorByType }" CornerRadius="16"  />
+                            <Label
+                                HorizontalOptions="StartAndExpand" 
+                                Text="Defense"/>
+                            <AbsoluteLayout 
+                                HorizontalOptions="Start">
+                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,0" 
+                                    HeightRequest="20" 
+                                    WidthRequest="220"  
+                                    BackgroundColor="LightGray" 
+                                    CornerRadius="16" />
+                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,7.5" 
+                                    HeightRequest="5" 
+                                    WidthRequest="{Binding Defense}" 
+                                    BackgroundColor="{Binding BackgroundColorByType }" 
+                                    CornerRadius="16"  />
                             </AbsoluteLayout>
-                            <Label Text="{Binding Defense}"></Label>
-
-
+                            <Label Text="{Binding Defense}"/>
                         </StackLayout>
+
                         <StackLayout
                             Orientation="Horizontal"
                             Padding="0,0,0,10">
-                            <Label HorizontalOptions="StartAndExpand">Vitesse</Label>
-
-                            <AbsoluteLayout HorizontalOptions="Start"   >
-                                <BoxView AbsoluteLayout.LayoutBounds="0, 0"  HeightRequest="20" WidthRequest="220"  BackgroundColor="LightGray" CornerRadius="16" />
-                                <BoxView AbsoluteLayout.LayoutBounds="0,7.5" HeightRequest="5" WidthRequest="{Binding Speed}" BackgroundColor="{Binding BackgroundColorByType}"  CornerRadius="16" />
+                            <Label 
+                                HorizontalOptions="StartAndExpand" 
+                                Text="Vitesse"/>
+                            <AbsoluteLayout 
+                                HorizontalOptions="Start">
+                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,0"  
+                                    HeightRequest="20" 
+                                    WidthRequest="220"  
+                                    BackgroundColor="LightGray" 
+                                    CornerRadius="16" />
+                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,7.5" 
+                                    HeightRequest="5" 
+                                    WidthRequest="{Binding Speed}" 
+                                    BackgroundColor="{Binding BackgroundColorByType}"  
+                                    CornerRadius="16" />
                             </AbsoluteLayout>
-                            <Label Text="{Binding Speed}"></Label>
-
+                            <Label Text="{Binding Speed}"/>
                         </StackLayout>
                     </FlexLayout>
+                    <Button x:Name="deleteButton" Text="Supprimer le pokemon" Clicked="OnDeleteButtonClicked" HorizontalOptions="Center" CornerRadius="16"></Button>
                 </StackLayout>
             </Frame>
         </FlexLayout>
