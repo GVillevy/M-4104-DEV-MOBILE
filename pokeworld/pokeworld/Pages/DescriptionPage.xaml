@@ -37,8 +37,9 @@
                 <StackLayout
                     Padding="4"
                     HorizontalOptions="FillAndExpand"
+
                     >
-                    <Label HorizontalOptions="Center" FontAttributes="Bold" FontSize="Large">Salameche</Label>
+                    <Label x:Name="nomPokemon" Text="{Binding Name}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Large"></Label>
 
                     <FlexLayout
                         Direction="Row"
@@ -51,7 +52,7 @@
                             <Label Text="{Binding Weight,StringFormat='{0:0}kg'}" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center"/>
                             <Label Text="POIDS" FontAttributes="Bold" FontSize="12" HorizontalOptions="Center"/>
                         </StackLayout>
-                        <Rectangle BackgroundColor="{Binding BackgroundColorByType}" HeightRequest="40" WidthRequest="1"></Rectangle>
+                        <Rectangle BackgroundColor="LightGray" HeightRequest="40" WidthRequest="1"></Rectangle>
 
                         <StackLayout
                             Orientation="Vertical"
@@ -69,7 +70,7 @@
                             <Label Text="{Binding Type2}" FontAttributes="Bold" FontSize="12" HorizontalOptions="Center"/>
                         </StackLayout>
 
-                        <Rectangle BackgroundColor="{Binding BackgroundColorByType}" HeightRequest="40" WidthRequest="1"></Rectangle>
+                        <Rectangle BackgroundColor="LightGray" HeightRequest="40" WidthRequest="1"></Rectangle>
 
                         <StackLayout
                             Orientation="Vertical"
@@ -80,6 +81,9 @@
                         </StackLayout>
 
                     </FlexLayout>
+                    
+                    <Button x:Name="deleteButton" Text="Supprimer pokémon" Clicked="OnDeleteButtonClicked"></Button>
+                    
                 </StackLayout>
                     
                 

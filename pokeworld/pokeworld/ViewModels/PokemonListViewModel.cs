@@ -45,10 +45,11 @@ namespace pokeworld.ViewModels
                 {
                     myPokemon.TypeImg2 = getImageByType(myPokemon.Type2);
                 }
+                myPokemon.IsFromApi = false;
                 PokemonsList.Add(myPokemon);
             }
 
-            for (int i = 1; i < 15; i++)
+            for (int i = 1; i < 50; i++)
             {
                 Pokemon pokemon = await Task.Run(() => pokeClient.GetResourceAsync<Pokemon>(i));
                 nbType = pokemon.Types.Count;
@@ -70,8 +71,8 @@ namespace pokeworld.ViewModels
                     myPokemon.TypeImg2 = getImageByType(pokemon.Types[1].Type.Name);
                     myPokemon.Type2 = pokemon.Types[1].Type.Name;
                 }
-                  
-                
+
+                myPokemon.IsFromApi = true;
                 PokemonsList.Add(myPokemon);
             }
         }

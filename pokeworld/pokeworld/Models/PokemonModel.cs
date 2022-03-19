@@ -18,8 +18,7 @@ namespace pokeworld.Models
         public int Height { get; set; }
         public int Weight { get; set; }
         public string BackgroundColorByType { get; set; }
-
-
+        public bool IsFromApi { get; set; }
     }
 
 }

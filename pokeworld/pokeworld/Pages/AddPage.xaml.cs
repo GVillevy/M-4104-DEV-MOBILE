@@ -40,6 +40,7 @@ namespace pokeworld.Pages
             {
                 pokemon.TypeImg2 = PokemonListViewModel.Instance.getImageByType(pokemon.Type2);
             }
+            pokemon.IsFromApi = false;
 
             PokemonListViewModel.Instance.PokemonsList.Insert(0, pokemon);
 

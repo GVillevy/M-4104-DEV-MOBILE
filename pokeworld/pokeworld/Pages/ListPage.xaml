@@ -12,7 +12,7 @@
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
                                 <Setter Property="BackgroundColor"
-                                        Value="{Binding BackgroundColorByType}" />
+                                        Value="White" />
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
