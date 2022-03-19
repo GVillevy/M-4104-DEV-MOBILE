@@ -11,7 +11,6 @@ namespace pokeworld.ViewModels
 {
     class PokemonListViewModel : BaseViewModel
     {
-
         private static PokemonListViewModel _instance = new PokemonListViewModel();
         public static PokemonListViewModel Instance { get { return _instance; } }
         private PokemonModel myPokemon;
@@ -23,6 +22,7 @@ namespace pokeworld.ViewModels
             get { return GetValue<ObservableCollection<PokemonModel>>(); }
             set { SetValue(value); }
         }
+
         public PokemonListViewModel()
         {
             PokemonsList = new ObservableCollection<PokemonModel>();
@@ -45,11 +45,10 @@ namespace pokeworld.ViewModels
                 {
                     myPokemon.TypeImg2 = getImageByType(myPokemon.Type2);
                 }
-                myPokemon.IsFromApi = false;
                 PokemonsList.Add(myPokemon);
             }
 
-            for (int i = 1; i < 50; i++)
+            for (int i = 1; i < 15; i++)
             {
                 Pokemon pokemon = await Task.Run(() => pokeClient.GetResourceAsync<Pokemon>(i));
                 nbType = pokemon.Types.Count;
@@ -63,7 +62,13 @@ namespace pokeworld.ViewModels
                     Height = pokemon.Height,
                     BackgroundColorByType = getBackgroundColorByType(pokemon.Types[0].Type.Name),
                     TypeImg1 = getImageByType(pokemon.Types[0].Type.Name),
-                    Type1 = pokemon.Types[0].Type.Name
+                    Type1 = pokemon.Types[0].Type.Name,
+
+                    HP = pokemon.Stats[0].BaseStat,
+                    Attack = pokemon.Stats[1].BaseStat,
+                    Defense = pokemon.Stats[2].BaseStat,
+                    Speed = pokemon.Stats[5].BaseStat,
+
                 };
 
                 if (nbType == 2)
@@ -72,8 +77,7 @@ namespace pokeworld.ViewModels
                     myPokemon.Type2 = pokemon.Types[1].Type.Name;
                 }
 
-                myPokemon.IsFromApi = true;
-                PokemonsList.Add(myPokemon);
+                PokemonsList.Add(myPokemon);  
             }
         }
         public string getBackgroundColorByType(string Type)

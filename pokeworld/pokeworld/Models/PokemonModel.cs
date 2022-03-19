@@ -15,10 +15,14 @@ namespace pokeworld.Models
         public string TypeImg2 { get; set; }
         public string Type1 { get; set; }
         public string Type2 { get; set; }
-        public int Height { get; set; }
-        public int Weight { get; set; }
+        public double Height { get; set; }
+        public double Weight { get; set; }
+        public int HP { get; set; }
+        public int Attack { get; set; }
+        public int Defense { get; set; }
+        public int Speed { get; set; }
         public string BackgroundColorByType { get; set; }
-        public bool IsFromApi { get; set; }
-    }
 
+
+    }
 }
