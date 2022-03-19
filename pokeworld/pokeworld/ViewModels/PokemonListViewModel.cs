@@ -45,6 +45,7 @@ namespace pokeworld.ViewModels
                 {
                     myPokemon.TypeImg2 = getImageByType(myPokemon.Type2);
                 }
+                myPokemon.IsFromApi = false;
                 PokemonsList.Add(myPokemon);
             }
 
@@ -76,7 +77,7 @@ namespace pokeworld.ViewModels
                     myPokemon.TypeImg2 = getImageByType(pokemon.Types[1].Type.Name);
                     myPokemon.Type2 = pokemon.Types[1].Type.Name;
                 }
-
+                myPokemon.IsFromApi = false;
                 PokemonsList.Add(myPokemon);  
             }
         }
