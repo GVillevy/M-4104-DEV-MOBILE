@@ -15,5 +15,9 @@
             Icon="liste.png">
             <views:ListPage/>
         </Tab>
+        <Tab Title="Recherche"
+            Icon="recherche.png">
+            <views:ResearchPage/>
+        </Tab>
     </TabBar>
 </Shell>

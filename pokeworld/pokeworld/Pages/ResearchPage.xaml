@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="pokeworld.Pages.ResearchPage">
+    <ContentPage.Content>
+
+        <StackLayout>
+
+            <SearchBar
+                        Placeholder="Entrez un nom de pokemon"
+                        PlaceholderColor="Black"
+                        BackgroundColor="LightGray"
+                        TextColor="Black"
+                        IsSpellCheckEnabled="False"
+                        Text="{Binding PokemonSearched}"
+                        SearchCommand="{Binding SearchPokemon}">
+            </SearchBar>
+            <Rectangle Margin="0,-9,0,0" WidthRequest="1000" BackgroundColor="Black" HeightRequest="4"></Rectangle>
+
+            <CollectionView 
+            x:Name="SearchPokemon"
+            BindingContext="{Binding PokemonResearched}"
+            ItemsSource="{Binding PokemonResearched}"
+            >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <FlexLayout          
+            Direction="Column"
+            JustifyContent="Start"   
+            AlignItems="Center"
+            Wrap="NoWrap"
+            Padding="10,10,10,10">
+                            <Frame
+               CornerRadius="360"
+               BorderColor="Black"
+               HeightRequest="180"
+               WidthRequest="180"
+               VerticalOptions="Center"
+               Margin="0,0,0,10">
+                                <Image 
+                    Source="{Binding Image}"
+                    Aspect="AspectFit"
+                    HeightRequest="200"
+                    WidthRequest="200"/>
+                            </Frame>
+
+                            <Frame
+                CornerRadius="20">
+                                <StackLayout
+                    Padding="4"
+                    HorizontalOptions="FillAndExpand">
+                                    <Label 
+                        Text="{Binding Name}" 
+                        HorizontalOptions="Center" 
+                        FontAttributes="Bold" 
+                        FontSize="Large"/>
+
+                                    <FlexLayout
+                        Direction="Row"
+                        JustifyContent="SpaceBetween"
+                        AlignItems="Center"
+                        >
+                                        <StackLayout
+                            Orientation="Vertical"
+                            Spacing="0">
+                                            <Label 
+                                Text="{Binding Weight, StringFormat='0,{0:0}kg'}" 
+                                FontAttributes="Bold" FontSize="Large" 
+                                HorizontalOptions="Center"/>
+                                            <Label Text="POIDS" 
+                                   FontAttributes="Bold" 
+                                   FontSize="12" 
+                                   HorizontalOptions="Center"/>
+                                        </StackLayout>
+
+                                        <Rectangle 
+                            BackgroundColor="LightGray" 
+                            HeightRequest="40" 
+                            WidthRequest="1">
+                                        </Rectangle>
+
+                                        <StackLayout
+                            Orientation="Vertical"
+                            Padding="0,0,-5,0">
+                                            <Image 
+                                Source="{Binding TypeImg1}" 
+                                Aspect="AspectFit"/>
+                                            <Label 
+                                Text="{Binding Type1}" 
+                                FontAttributes="Bold" 
+                                FontSize="12" 
+                                HorizontalOptions="Center"/>
+                                        </StackLayout>
+
+                                        <StackLayout
+                            Orientation="Vertical"
+                            HorizontalOptions="Start"
+                            Padding="-5,0,0,0">
+                                            <Image 
+                                Source="{Binding TypeImg2}"  
+                                Aspect="AspectFit" />
+                                            <Label 
+                                Text="{Binding Type2}" 
+                                FontAttributes="Bold" 
+                                FontSize="12" 
+                                HorizontalOptions="Center"/>
+                                        </StackLayout>
+
+                                        <Rectangle 
+                            BackgroundColor="LightGray" 
+                            HeightRequest="40" 
+                            WidthRequest="1">
+                                        </Rectangle>
+
+                                        <StackLayout
+                            Orientation="Vertical"
+                            Spacing="0">
+                                            <Label 
+                                Text="{Binding Height ,StringFormat='0,{0:0}m'}" 
+                                FontAttributes="Bold" FontSize="Large" 
+                                HorizontalOptions="Center"/>
+                                            <Label 
+                                Text="TAILLE" 
+                                FontAttributes="Bold" 
+                                FontSize="12" 
+                                HorizontalOptions="Center"/>
+                                        </StackLayout>
+                                    </FlexLayout>
+
+                                    <FlexLayout
+                        Direction="Column"
+                        JustifyContent="Start"
+                        Padding="0,10,0,0">
+                                        <StackLayout
+                            Orientation="Horizontal"
+                            Padding="0,0,0,10">
+                                            <Label 
+                                HorizontalOptions="StartAndExpand" 
+                                Text="PV"/>
+                                            <AbsoluteLayout
+                                HorizontalOptions="Start">
+                                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,0"  
+                                    HeightRequest="20" 
+                                    WidthRequest="220"  
+                                    BackgroundColor="LightGray" 
+                                    CornerRadius="16" />
+                                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,7.5" 
+                                    HeightRequest="5" 
+                                    WidthRequest="{Binding HP}" 
+                                    BackgroundColor="#78C850" 
+                                    CornerRadius="16"  />
+                                            </AbsoluteLayout>
+                                            <Label 
+                                Text="{Binding HP}"/>
+                                        </StackLayout>
+
+                                        <StackLayout
+                            Orientation="Horizontal"
+                            Padding="0,0,0,10">
+                                            <Label 
+                                HorizontalOptions="StartAndExpand"
+                                Text="Attaque"/>
+                                            <AbsoluteLayout 
+                                HorizontalOptions="Start">
+                                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,0"  
+                                    HeightRequest="20" WidthRequest="220" 
+                                    BackgroundColor="LightGray" 
+                                    CornerRadius="16" />
+                                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,7.5" 
+                                    HeightRequest="5" 
+                                    WidthRequest="{Binding Attack}" 
+                                    BackgroundColor="#78C850" 
+                                    CornerRadius="16" />
+                                            </AbsoluteLayout>
+                                            <Label 
+                                Text="{Binding Attack}"/>
+                                        </StackLayout>
+
+                                        <StackLayout
+                            Orientation="Horizontal"
+                            Padding="0,0,0,10">
+                                            <Label
+                                HorizontalOptions="StartAndExpand" 
+                                Text="Defense"/>
+                                            <AbsoluteLayout 
+                                HorizontalOptions="Start">
+                                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,0" 
+                                    HeightRequest="20" 
+                                    WidthRequest="220"  
+                                    BackgroundColor="LightGray" 
+                                    CornerRadius="16" />
+                                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,7.5" 
+                                    HeightRequest="5" 
+                                    WidthRequest="{Binding Defense}" 
+                                    BackgroundColor="#78C850" 
+                                    CornerRadius="16" 
+                                    />
+                                            </AbsoluteLayout>
+                                            <Label Text="{Binding Defense}"/>
+                                        </StackLayout>
+
+                                        <StackLayout
+                            Orientation="Horizontal"
+                            Padding="0,0,0,10">
+                                            <Label 
+                                HorizontalOptions="StartAndExpand" 
+                                Text="Vitesse"/>
+                                            <AbsoluteLayout 
+                                HorizontalOptions="Start">
+                                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,0"  
+                                    HeightRequest="20" 
+                                    WidthRequest="220"  
+                                    BackgroundColor="LightGray" 
+                                    CornerRadius="16" />
+                                                <BoxView 
+                                    AbsoluteLayout.LayoutBounds="0,7.5" 
+                                    HeightRequest="5" 
+                                    WidthRequest="{Binding Speed}" 
+                                    BackgroundColor="#78C850"  
+                                    CornerRadius="16" />
+                                            </AbsoluteLayout>
+                                            <Label Text="{Binding Speed}"/>
+                                        </StackLayout>
+                                    </FlexLayout>
+                                </StackLayout>
+                            </Frame>
+                        </FlexLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
