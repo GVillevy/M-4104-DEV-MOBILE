@@ -17,44 +17,56 @@ namespace pokeworld.Pages
         public AddPage()
         {
             InitializeComponent();
+            BindingContext = new PickerViewModel();
         }
 
 
         private async void OnNewButtonClicked(object sender, EventArgs e)
         {
-            PokemonModel pokemon = new PokemonModel
+            if (!string.IsNullOrWhiteSpace(nomPokemon.Text) && !string.IsNullOrWhiteSpace(selectedImagePath) && type1Pokemon.SelectedIndex != -1 && !string.IsNullOrWhiteSpace(heightPokemon.Text) && !string.IsNullOrWhiteSpace(weightPokemon.Text))
             {
-                Name = nomPokemon.Text,
-                Image = selectedImagePath,
-                Type1 = type1Pokemon.Text,
-                Type2 = type2Pokemon.Text,
-                Height = Int16.Parse(heightPokemon.Text),
-                Weight = Int16.Parse(weightPokemon.Text),
-            };
+                PokemonModel pokemon = new PokemonModel
+                {
+                    Name = nomPokemon.Text,
+                    Image = selectedImagePath,
+                    Type1 = type1Pokemon.Items[type1Pokemon.SelectedIndex],
+                    Height = Int16.Parse(heightPokemon.Text),
+                    Weight = Int16.Parse(weightPokemon.Text),
+                };
 
-            if (!String.IsNullOrEmpty(pokemon.Type1))
-            {
-                pokemon.TypeImg1 = PokemonListViewModel.Instance.getImageByType(pokemon.Type1);
+                if(type2Pokemon.SelectedIndex != -1)
+                {
+                    pokemon.Type2 = type1Pokemon.Items[type1Pokemon.SelectedIndex];
+                }
+
+                if (!String.IsNullOrEmpty(pokemon.Type1))
+                {
+                    pokemon.TypeImg1 = PokemonListViewModel.Instance.GetImageByType(pokemon.Type1);
+                }
+                if (!String.IsNullOrEmpty(pokemon.Type2))
+                {
+                    pokemon.TypeImg2 = PokemonListViewModel.Instance.GetImageByType(pokemon.Type2);
+                }
+                pokemon.IsFromApi = false;
+
+                PokemonListViewModel.Instance.PokemonsList.Insert(0, pokemon);
+
+                await App.Database.connection.InsertAsync(pokemon);
+                await DisplayAlert("Succès", $"Pokémon : {pokemon.Name} ajouté !", "Ok");
+
+
+                nomPokemon.Text = nomPokemon.Text = string.Empty;
+                selectionImage.Source = "ajout.png";
+                selectedImagePath = null;
+                heightPokemon.Text = null;
+                weightPokemon.Text = null;
+                type1Pokemon.SelectedIndex = -1;
+                type2Pokemon.SelectedIndex = -1;
             }
-            if (!String.IsNullOrEmpty(pokemon.Type2))
+            else
             {
-                pokemon.TypeImg2 = PokemonListViewModel.Instance.getImageByType(pokemon.Type2);
+                await DisplayAlert("Erreur", $"Impossible d'ajouter un pokémon avec des caractéristiques vides !", "Ok");
             }
-            pokemon.IsFromApi = false;
-
-            PokemonListViewModel.Instance.PokemonsList.Insert(0, pokemon);
-
-            await App.Database.connection.InsertAsync(pokemon);
-            await DisplayAlert("Succès", $"Pokémon : {pokemon.Name} ajouté !", "Ok");
-
-
-            nomPokemon.Text = nomPokemon.Text = string.Empty;
-            selectionImage.Source = "ajout.png";
-            selectedImagePath = null;
-            type1Pokemon.Text = null;
-            type2Pokemon.Text = null;
-            heightPokemon.Text = null;
-            weightPokemon.Text = null;
         }
 
         async void Handle_Clicked(object sender, System.EventArgs e)

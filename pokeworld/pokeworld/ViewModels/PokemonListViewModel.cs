@@ -30,7 +30,8 @@ namespace pokeworld.ViewModels
         }
         public async void GetPokemonList()
         {
-
+            /*await App.Database.connection.ExecuteAsync("DELETE FROM Pokemon");
+            PokemonsList.Clear();*/
             PokeApiClient pokeClient = new PokeApiClient();
             nbrPokeDatabase = await App.Database.connection.Table<PokemonModel>().CountAsync();
 
@@ -39,49 +40,53 @@ namespace pokeworld.ViewModels
                 myPokemon = await App.Database.connection.Table<PokemonModel>().ElementAtAsync(i);
                 if (!String.IsNullOrEmpty(myPokemon.Type1))
                 {
-                    myPokemon.TypeImg1 = getImageByType(myPokemon.Type1);
+                    myPokemon.TypeImg1 = GetImageByType(myPokemon.Type1);
                 }
                 if (!String.IsNullOrEmpty(myPokemon.Type2))
                 {
-                    myPokemon.TypeImg2 = getImageByType(myPokemon.Type2);
+                    myPokemon.TypeImg2 = GetImageByType(myPokemon.Type2);
                 }
-                myPokemon.IsFromApi = false;
                 PokemonsList.Add(myPokemon);
             }
 
-            for (int i = 1; i < 15; i++)
+            if (nbrPokeDatabase == 0)
             {
-                Pokemon pokemon = await Task.Run(() => pokeClient.GetResourceAsync<Pokemon>(i));
-                nbType = pokemon.Types.Count;
-
-                myPokemon = new PokemonModel()
+                for (int i = 1; i < 50; i++)
                 {
-                    Id = pokemon.Id,
-                    Name = pokemon.Name,
-                    Image = pokemon.Sprites.FrontDefault,
-                    Weight = pokemon.Weight,
-                    Height = pokemon.Height,
-                    BackgroundColorByType = getBackgroundColorByType(pokemon.Types[0].Type.Name),
-                    TypeImg1 = getImageByType(pokemon.Types[0].Type.Name),
-                    Type1 = pokemon.Types[0].Type.Name,
+                    Pokemon pokemon = await Task.Run(() => pokeClient.GetResourceAsync<Pokemon>(i));
+                    nbType = pokemon.Types.Count;
 
-                    HP = pokemon.Stats[0].BaseStat,
-                    Attack = pokemon.Stats[1].BaseStat,
-                    Defense = pokemon.Stats[2].BaseStat,
-                    Speed = pokemon.Stats[5].BaseStat,
+                    myPokemon = new PokemonModel()
+                    {
+                        Id = pokemon.Id,
+                        Name = pokemon.Name,
+                        Image = pokemon.Sprites.FrontDefault,
+                        Weight = pokemon.Weight,
+                        Height = pokemon.Height,
+                        BackgroundColorByType = GetBackgroundColorByType(pokemon.Types[0].Type.Name),
+                        TypeImg1 = GetImageByType(pokemon.Types[0].Type.Name),
+                        Type1 = pokemon.Types[0].Type.Name,
 
-                };
+                        HP = pokemon.Stats[0].BaseStat,
+                        Attack = pokemon.Stats[1].BaseStat,
+                        Defense = pokemon.Stats[2].BaseStat,
+                        Speed = pokemon.Stats[5].BaseStat,
 
-                if (nbType == 2)
-                {
-                    myPokemon.TypeImg2 = getImageByType(pokemon.Types[1].Type.Name);
-                    myPokemon.Type2 = pokemon.Types[1].Type.Name;
+                    };
+
+                    if (nbType == 2)
+                    {
+                        myPokemon.TypeImg2 = GetImageByType(pokemon.Types[1].Type.Name);
+                        myPokemon.Type2 = pokemon.Types[1].Type.Name;
+                    }
+                    myPokemon.IsFromApi = true;
+
+                    await App.Database.connection.InsertAsync(myPokemon);
+                    PokemonsList.Add(myPokemon);
                 }
-                myPokemon.IsFromApi = true;
-                PokemonsList.Add(myPokemon);  
             }
         }
-        public string getBackgroundColorByType(string Type)
+        public string GetBackgroundColorByType(string Type)
         {
             switch (Type)
             {
@@ -106,7 +111,7 @@ namespace pokeworld.ViewModels
                 default: return "#FFFFFF";
             }
         }
-        public string getImageByType(string Type)
+        public string GetImageByType(string Type)
         {
             switch (Type)
             {

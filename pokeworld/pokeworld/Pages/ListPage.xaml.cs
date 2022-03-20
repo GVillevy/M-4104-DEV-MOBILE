@@ -25,7 +25,6 @@ namespace pokeworld.Pages
         {
             PokemonModel current = e.CurrentSelection.FirstOrDefault() as PokemonModel;
             Navigation.PushAsync(new DescriptionPage(current));
-            //Console.WriteLine(current.IsFromApi);
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="pokeworld.Pages.AddPage">
+             x:Class="pokeworld.Pages.AddPage"
+             Shell.NavBarIsVisible="False">
 
     <StackLayout>
         <Image Source="ajout.png"
@@ -14,10 +15,18 @@
                             NumberOfTapsRequired="1" />
             </Image.GestureRecognizers>
         </Image>
-        
+
         <Entry x:Name="nomPokemon"  Placeholder="Nom"/>
-        <Entry x:Name="type1Pokemon"  Placeholder="Type1"/>
-        <Entry x:Name="type2Pokemon"  Placeholder="Type2"/>
+
+        <Picker x:Name="type1Pokemon"
+                Title="Type1"
+                ItemsSource="{Binding TypeList}"/>
+
+        <Picker x:Name="type2Pokemon"
+                Title="Type2"
+                ItemsSource="{Binding TypeList}"/>
+
+
         <Entry x:Name="heightPokemon"  Placeholder="Hauteur"/>
         <Entry x:Name="weightPokemon"  Placeholder="Poids"/>
         <Button x:Name="newButton" Text="Ajouter pokémon" Clicked="OnNewButtonClicked"></Button>
