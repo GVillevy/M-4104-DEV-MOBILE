@@ -58,9 +58,9 @@ namespace pokeworld.ViewModels
                     Image = pokemon.Sprites.FrontDefault,
                     Weight = pokemon.Weight,
                     Height = pokemon.Height,
-                    TypeImg1 = GetImageByType(pokemon.Types[0].Type.Name),
+                    TypeImg1 = PokemonListViewModel.Instance.GetImageByType(pokemon.Types[0].Type.Name),
                     Type1 = pokemon.Types[0].Type.Name,
-
+                    BackgroundColorByType = PokemonListViewModel.Instance.GetBackgroundColorByType(pokemon.Types[0].Type.Name),
                     HP = pokemon.Stats[0].BaseStat,
                     Attack = pokemon.Stats[1].BaseStat,
                     Defense = pokemon.Stats[2].BaseStat,
@@ -70,7 +70,7 @@ namespace pokeworld.ViewModels
 
                 if (nbType == 2)
                 {
-                    myPokemon.TypeImg2 = GetImageByType(pokemon.Types[1].Type.Name);
+                    myPokemon.TypeImg2 = PokemonListViewModel.Instance.GetImageByType(pokemon.Types[1].Type.Name);
                     myPokemon.Type2 = pokemon.Types[1].Type.Name;
                 }
                 PokemonReasarched.Add(myPokemon);
@@ -84,31 +84,5 @@ namespace pokeworld.ViewModels
             }
 
         }
-        public string GetImageByType(string Type)
-        {
-            switch (Type)
-            {
-                case "grass": return "grass.png";
-                case "fire": return "fire.png";
-                case "water": return "water.png";
-                case "normal": return "normal.png";
-                case "fighting": return "fighting.png";
-                case "bug": return "bug.png";
-                case "flying": return "flying.png";
-                case "poison": return "poison.png";
-                case "rock": return "rock.png";
-                case "ground": return "ground.png";
-                case "steel": return "steel.png";
-                case "dragon": return "dragon.png";
-                case "ice": return "ice.png";
-                case "fairy": return "fairy.png";
-                case "dark": return "dark.png";
-                case "ghost": return "ghost.png";
-                case "electric": return "electric.png";
-                case "psychic": return "psychic.png";
-                default: return "normal.png";
-            }
-        }
-
     }
 }

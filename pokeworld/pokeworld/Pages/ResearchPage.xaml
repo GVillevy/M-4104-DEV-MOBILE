@@ -25,7 +25,8 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
 
-                        <FlexLayout          
+                        <FlexLayout
+            
             Direction="Column"
             JustifyContent="Start"   
             AlignItems="Center"
@@ -150,7 +151,7 @@
                                     AbsoluteLayout.LayoutBounds="0,7.5" 
                                     HeightRequest="5" 
                                     WidthRequest="{Binding HP}" 
-                                    BackgroundColor="#78C850" 
+                                    BackgroundColor="{Binding BackgroundColorByType}" 
                                     CornerRadius="16"  />
                                             </AbsoluteLayout>
                                             <Label 
@@ -174,7 +175,7 @@
                                     AbsoluteLayout.LayoutBounds="0,7.5" 
                                     HeightRequest="5" 
                                     WidthRequest="{Binding Attack}" 
-                                    BackgroundColor="#78C850" 
+                                    BackgroundColor="{Binding BackgroundColorByType}" 
                                     CornerRadius="16" />
                                             </AbsoluteLayout>
                                             <Label 
@@ -199,9 +200,8 @@
                                     AbsoluteLayout.LayoutBounds="0,7.5" 
                                     HeightRequest="5" 
                                     WidthRequest="{Binding Defense}" 
-                                    BackgroundColor="#78C850" 
-                                    CornerRadius="16" 
-                                    />
+                                    BackgroundColor="{Binding BackgroundColorByType }" 
+                                    CornerRadius="16"  />
                                             </AbsoluteLayout>
                                             <Label Text="{Binding Defense}"/>
                                         </StackLayout>
@@ -224,7 +224,7 @@
                                     AbsoluteLayout.LayoutBounds="0,7.5" 
                                     HeightRequest="5" 
                                     WidthRequest="{Binding Speed}" 
-                                    BackgroundColor="#78C850"  
+                                    BackgroundColor="{Binding BackgroundColorByType}"  
                                     CornerRadius="16" />
                                             </AbsoluteLayout>
                                             <Label Text="{Binding Speed}"/>
