@@ -3,17 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="pokeworld.Pages.HomePage"
              Shell.NavBarIsVisible="False">
+
     <FlexLayout Direction="Column"
                 AlignItems="Center"
                 JustifyContent="SpaceEvenly">
 
-        <Label Text="PokeWorld"
-               FontSize="Large" />
+        <Image 
+            Source="pokeworld.png"/>
 
-        <Image Source="logo.png" />
+        <Label Text="Bienvenue sur PokeWorld !"
+               FontSize="Title"
+               FontAttributes="Bold"/>
 
-        <Button Text="Do-Nothing Button" />
+        <Frame
+            CornerRadius="18"
+            BorderColor="Black"
+            WidthRequest="300">
+            <Label 
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="Large"
+                Text="Ici, vous pouvez consulter une grande liste de pokémon, ainsi que la possibilité d'ajouter vos propres pokémons personnalisés !" />
+        </Frame>
 
-        <Label Text="Another Label" />
     </FlexLayout>
 </ContentPage>

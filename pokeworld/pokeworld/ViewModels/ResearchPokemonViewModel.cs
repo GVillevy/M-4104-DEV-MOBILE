@@ -48,7 +48,6 @@ namespace pokeworld.ViewModels
             {
                 PokeApiClient pokeClient = new PokeApiClient();
                 Pokemon pokemon = await Task.Run(() => pokeClient.GetResourceAsync<Pokemon>(pokemonName));
-
                 int nbType = pokemon.Types.Count;
 
                 myPokemon = new PokemonModel()
@@ -82,7 +81,6 @@ namespace pokeworld.ViewModels
                 await App.Current.MainPage.DisplayAlert("Erreur", "Le pokemon recherché n'a pas été trouvé !", "Réessayez");
                 Console.WriteLine("Aucun pokemon trouvé " + e.Message);
             }
-
         }
     }
 }

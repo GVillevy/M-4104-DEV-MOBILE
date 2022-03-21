@@ -32,11 +32,15 @@ namespace pokeworld.Pages
                     Type1 = type1Pokemon.Items[type1Pokemon.SelectedIndex],
                     Height = Int16.Parse(heightPokemon.Text),
                     Weight = Int16.Parse(weightPokemon.Text),
+                    HP = (int)HP.Value,
+                    Attack = (int)Attack.Value,
+                    Defense = (int)Defense.Value,
+                    Speed = (int)Speed.Value,
                 };
 
                 if(type2Pokemon.SelectedIndex != -1)
                 {
-                    pokemon.Type2 = type1Pokemon.Items[type1Pokemon.SelectedIndex];
+                    pokemon.Type2 = type2Pokemon.Items[type2Pokemon.SelectedIndex];
                 }
 
                 if (!String.IsNullOrEmpty(pokemon.Type1))
@@ -55,13 +59,17 @@ namespace pokeworld.Pages
                 await DisplayAlert("Succès", $"Pokémon : {pokemon.Name} ajouté !", "Ok");
 
 
-                nomPokemon.Text = nomPokemon.Text = string.Empty;
+                nomPokemon.Text = null;
                 selectionImage.Source = "ajout.png";
                 selectedImagePath = null;
                 heightPokemon.Text = null;
                 weightPokemon.Text = null;
                 type1Pokemon.SelectedIndex = -1;
                 type2Pokemon.SelectedIndex = -1;
+                HP.Value = 1;
+                Attack.Value = 1;
+                Defense.Value = 1;
+                Speed.Value = 1;
             }
             else
             {

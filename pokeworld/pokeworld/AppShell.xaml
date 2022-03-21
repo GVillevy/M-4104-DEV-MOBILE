@@ -3,7 +3,7 @@
        xmlns:views="clr-namespace:pokeworld.Pages"
        x:Class="pokeworld.AppShell">
     <TabBar>
-        <Tab Title="Acceuil"
+        <Tab Title="Accueil"
             Icon="home.png">
             <views:HomePage/>
         </Tab>

@@ -21,8 +21,8 @@
                 <Image 
                     Source="{Binding Image}"
                     Aspect="AspectFit"
-                    HeightRequest="200"
-                    WidthRequest="200"/>
+                    HeightRequest="180"
+                    WidthRequest="180"/>
             </Frame>
 
             <Frame

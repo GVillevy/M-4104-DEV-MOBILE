@@ -3,33 +3,102 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="pokeworld.Pages.AddPage"
              Shell.NavBarIsVisible="False">
-
     <StackLayout>
-        <Image Source="ajout.png"
-                       x:Name="selectionImage"
-                       WidthRequest="150"
-                       BackgroundColor="White">
+        <Image 
+            x:Name="selectionImage"
+            Source="ajout.png"
+            BackgroundColor="White"
+            VerticalOptions="Center"
+            WidthRequest="100">
             <Image.GestureRecognizers>
                 <TapGestureRecognizer
-                            Tapped="Handle_Clicked"
-                            NumberOfTapsRequired="1" />
+                    NumberOfTapsRequired="1" 
+                    Tapped="Handle_Clicked"/>
             </Image.GestureRecognizers>
         </Image>
 
-        <Entry x:Name="nomPokemon"  Placeholder="Nom"/>
+        <Entry 
+            x:Name="nomPokemon"
+            Placeholder="Nom"/>
 
-        <Picker x:Name="type1Pokemon"
-                Title="Type1"
-                ItemsSource="{Binding TypeList}"/>
+        <Picker 
+            x:Name="type1Pokemon"
+            ItemsSource="{Binding TypeList}"
+            Title="Type1"/>
+        <Picker 
+            x:Name="type2Pokemon"
+            ItemsSource="{Binding TypeList}"
+            Title="Type2"/>
 
-        <Picker x:Name="type2Pokemon"
-                Title="Type2"
-                ItemsSource="{Binding TypeList}"/>
+        <Entry 
+            x:Name="heightPokemon"
+            Placeholder="Hauteur"/>
+        <Entry 
+            x:Name="weightPokemon"
+            Placeholder="Poids"/>
+    <Label
+            FontAttributes="Bold"
+            FontSize="Medium"
+            Text="PV : "/>
+<Slider
+            x:Name="HP"
+            BackgroundColor="LightGray"
+            Maximum="200"
+            MaximumTrackColor="Black"
+            Minimum="0"
+            MinimumTrackColor="#F08030"
+            HeightRequest="15"
+            ThumbColor="Black"
+            WidthRequest="100"/>
 
+<Label
+            FontAttributes="Bold"
+            FontSize="Medium"
+            Text="Attaque : "/>
+<Slider
+            x:Name="Attack"
+            BackgroundColor="LightGray"
+            Maximum="134"
+            MaximumTrackColor="Black"
+            Minimum="0"
+            MinimumTrackColor="#F08030"
+            HeightRequest="15"
+            ThumbColor="Black"
+            WidthRequest="100"/>
+<Label
+            FontAttributes="Bold"
+            FontSize="Medium"
+            Text="Defense : "/>
+<Slider
+            x:Name="Defense"
+            BackgroundColor="LightGray"
+            Maximum="180"
+            MaximumTrackColor="Black"
+            Minimum="0"
+            MinimumTrackColor="#F08030"
+            HeightRequest="15"
+            ThumbColor="Black"
+            WidthRequest="100"/>
 
-        <Entry x:Name="heightPokemon"  Placeholder="Hauteur"/>
-        <Entry x:Name="weightPokemon"  Placeholder="Poids"/>
-        <Button x:Name="newButton" Text="Ajouter pokémon" Clicked="OnNewButtonClicked"></Button>
-    </StackLayout>
-   
-</ContentPage> 
+<Label
+            FontAttributes="Bold"
+            FontSize="Medium"
+            Text="Vitesse : "/>
+<Slider
+            x:Name="Speed"
+            BackgroundColor="LightGray"
+            Maximum="180"
+            MaximumTrackColor="Black"
+            Minimum="0"
+            MinimumTrackColor="#F08030"
+            HeightRequest="15"
+            ThumbColor="Black"
+            WidthRequest="100"/>
+
+<Button 
+            x:Name="newButton" 
+            Clicked="OnNewButtonClicked"
+            Text="Ajouter pokémon">
+</Button>
+</StackLayout>
+</ContentPage>

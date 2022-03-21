@@ -17,11 +17,24 @@ namespace pokeworld.ViewModels
         {
             var types = new List<String>()
         {
-            "fire",
-            "water",
             "bug",
+            "dark",
+            "dragon",
+            "electric",
+            "fairy",
+            "fighting",
+            "fire",
+            "flying",
+            "ghost",
             "grass",
-            "dragon"
+            "ground",
+            "ice",
+            "normal",
+            "poison",
+            "psychic",
+            "rock",
+            "steel",
+            "water",
 
         };
             return types;
