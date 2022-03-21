@@ -74,14 +74,6 @@ namespace pokeworld.ViewModels
                     nbType = pokemon.Types.Count;
 
                     /*
-                     * On convertit le poid et la taille qui sont des entiers dans l'API
-                     */
-                    double TempWeight = pokemon.Weight;
-                    TempWeight /= 10;
-                    double TempHeight = pokemon.Height;
-                    TempHeight /= 10;
-
-                    /*
                      * Création de notre pokemon et ajout de ses caractéristiques
                      */
                     myPokemon = new PokemonModel()
@@ -89,8 +81,8 @@ namespace pokeworld.ViewModels
                         Id = pokemon.Id,
                         Name = pokemon.Name,
                         Image = pokemon.Sprites.FrontDefault,
-                        Weight = TempWeight,
-                        Height = TempHeight,
+                        Weight = pokemon.Weight / 10.0,
+                        Height = pokemon.Height / 10.0,
                         BackgroundColorByType = GetBackgroundColorByType(pokemon.Types[0].Type.Name),
                         TypeImg1 = GetImageByType(pokemon.Types[0].Type.Name),
                         Type1 = pokemon.Types[0].Type.Name,
