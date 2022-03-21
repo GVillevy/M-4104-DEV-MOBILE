@@ -20,18 +20,18 @@
                 </VisualStateGroupList>
             </Setter>
         </Style>
+        
     </ContentPage.Resources>
 
     <ContentPage.Content>
         <CollectionView 
             x:Name="ListOfPokemon"
             BindingContext="{Binding PokemonList}"
+            ItemsLayout="VerticalGrid, 3"
             SelectedItem="{Binding SelectedPokemon}"
             SelectionMode="Single"
             SelectionChanged="OnClick"
-            ItemsLayout="VerticalGrid, 3"
-            VerticalScrollBarVisibility="Always"
-            >
+            VerticalScrollBarVisibility="Always">
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -39,12 +39,10 @@
                             Direction="Column"
                             AlignItems="Center"
                             Wrap="NoWrap"
-                            Padding="0,0,0,15"
-                            >
+                            Padding="0,0,0,15">
                         
                         <Label
-                            Padding="0,0,0,-5"
-                        >
+                            Padding="0,0,0,-5">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="ID " FontAttributes="Bold" FontSize="13"/>
@@ -53,20 +51,17 @@
                             </Label.FormattedText>
                         </Label>
 
-
                         <Image 
-                               Source="{Binding Image}"
-                               WidthRequest="80"
-                               HeightRequest="80"
-                                Aspect="AspectFit"
-                                />
+                            Source="{Binding Image}"
+                            WidthRequest="80"
+                            HeightRequest="80"
+                            Aspect="AspectFit"/>
 
                         <Label 
-                               Text="{Binding Name}"
-                               FontAttributes="Bold"
-                               FontSize="Large"
-                               Padding="0,-5,0,0"
-                            />
+                            Text="{Binding Name}"
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            Padding="0,-5,0,0"/>
                     </FlexLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

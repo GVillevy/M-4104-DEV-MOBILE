@@ -9,24 +9,37 @@ namespace pokeworld.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DescriptionPage : ContentPage
     {
-        public PokemonModel pokemonToRemove;
-        public int IdPokemonToRemove;
+        public PokemonModel pokemon;
+        public int pokemonId;
 
+        /*
+         * Constructeur de la classe DescriptionPage, prenant en paramètre 
+         * notre pokémon sur lequel on clique dans notre méthode OnClick de la classe ListPage
+         */
         public DescriptionPage(PokemonModel pokemon)
         {
             InitializeComponent();
             BindingContext = pokemon;
-            pokemonToRemove = pokemon;
+            this.pokemon = pokemon;
         }
 
+        /*
+         * Fonction apellée au clique du bouton supprimer, permettant de supprimer un pokémon
+         */
         private async void OnDeleteButtonClicked(object sender, EventArgs e)
         {
-            IdPokemonToRemove = pokemonToRemove.Id;
+            pokemonId = pokemon.Id;
 
-            if (!pokemonToRemove.IsFromApi)
+            /*
+             * On vérifie que notre pokémon ne provient pas de l'API
+             */
+            if (!pokemon.IsFromApi)
             {
-                PokemonListViewModel.Instance.PokemonsList.Remove(pokemonToRemove);
-                await App.Database.connection.DeleteAsync<PokemonModel>(IdPokemonToRemove);
+                /*
+                 * On supprime le pokémon
+                 */
+                PokemonListViewModel.Instance.PokemonsList.Remove(pokemon);
+                await App.Database.connection.DeleteAsync<PokemonModel>(pokemonId);
                 await Navigation.PushAsync(new ListPage());
             }
             else

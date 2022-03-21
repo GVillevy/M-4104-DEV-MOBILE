@@ -3,108 +3,122 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="pokeworld.Pages.DescriptionPage">
 
-    <ContentPage.Content>
-        <FlexLayout
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+            <Style x:Key="rectangleSeparator" TargetType="Rectangle">
+                <Setter Property="BackgroundColor" Value="LightGray"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="WidthRequest" Value="1"/>
+            </Style>
+            <Style x:Key="boxViewBackground" TargetType="BoxView">
+                <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,0"/>
+                <Setter Property="BackgroundColor" Value="LightGray"/>
+                <Setter Property="CornerRadius" Value="16"/>
+                <Setter Property="HeightRequest" Value="20"/>
+                <Setter Property="WidthRequest" Value="200"/>
+            </Style>
+            <Style x:Key="boxViewValue" TargetType="BoxView">
+                <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,7.5"/>
+                <Setter Property="BackgroundColor" Value="{Binding BackgroundColorByType }"/>
+                <Setter Property="CornerRadius" Value="16"/>
+                <Setter Property="HeightRequest" Value="5"/>
+            </Style>
             
-            Direction="Column"
-            JustifyContent="Start"   
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <FlexLayout    
             AlignItems="Center"
-            Wrap="NoWrap"
-            Padding="10,10,10,10">
+            Direction="Column"
+            JustifyContent="Start" 
+            Padding="10,10,10,10"
+            Wrap="NoWrap">
             <Frame
-               CornerRadius="360"
-               BorderColor="Black"
-               HeightRequest="180"
-               WidthRequest="180"
-               VerticalOptions="Center"
-               Margin="0,0,0,10">
+                BorderColor="Black"
+                CornerRadius="360"
+                HeightRequest="180"
+                Margin="0,0,0,10"
+                VerticalOptions="Center"
+                WidthRequest="180">
                 <Image 
                     Source="{Binding Image}"
                     Aspect="AspectFit"
                     HeightRequest="180"
                     WidthRequest="180"/>
             </Frame>
-
             <Frame
                 CornerRadius="20">
                 <StackLayout
-                    Padding="4"
-                    HorizontalOptions="FillAndExpand">
+                    HorizontalOptions="FillAndExpand"
+                    Padding="4">
                     <Label 
-                        Text="{Binding Name}" 
-                        HorizontalOptions="Center" 
-                        FontAttributes="Bold" 
-                        FontSize="Large"/>
-
+                        FontSize="Title"
+                        Style="{StaticResource labelStyle}"
+                        Text="{Binding Name}"/>
                     <FlexLayout
-                        Direction="Row"
-                        JustifyContent="SpaceBetween"
                         AlignItems="Center"
-                        >
+                        Direction="Row"
+                        JustifyContent="SpaceBetween">
                         <StackLayout
                             Orientation="Vertical"
                             Spacing="0">
+                            <Label
+                                FontSize="Large" 
+                                Style="{StaticResource labelStyle}"
+                                Text="{Binding Weight, StringFormat='{0:F1}kg'}"/>
                             <Label 
-                                Text="{Binding Weight, StringFormat='0,{0:0}kg'}" 
-                                FontAttributes="Bold" FontSize="Large" 
-                                HorizontalOptions="Center"/>
-                            <Label Text="POIDS" 
-                                   FontAttributes="Bold" 
-                                   FontSize="12" 
-                                   HorizontalOptions="Center"/>
+                                FontSize="12" 
+                                Style="{StaticResource labelStyle}"
+                                Text="POIDS"/>
                         </StackLayout>
 
                         <Rectangle 
-                            BackgroundColor="LightGray" 
-                            HeightRequest="40" 
-                            WidthRequest="1">
-                        </Rectangle>
+                            Style="{StaticResource  rectangleSeparator}"/>
 
                         <StackLayout
                             Orientation="Vertical"
                             Padding="0,0,-5,0">
-                            <Image 
-                                Source="{Binding TypeImg1}" 
-                                Aspect="AspectFit"/>
+                            <Image
+                                Aspect="AspectFit"
+                                Source="{Binding TypeImg1}"/>
                             <Label 
-                                Text="{Binding Type1}" 
-                                FontAttributes="Bold" 
                                 FontSize="12" 
-                                HorizontalOptions="Center"/>
+                                Style="{StaticResource labelStyle}"
+                                Text="{Binding Type1}"/>
                         </StackLayout>
 
                         <StackLayout
-                            Orientation="Vertical"
                             HorizontalOptions="Start"
+                            Orientation="Vertical"
                             Padding="-5,0,0,0">
                             <Image 
-                                Source="{Binding TypeImg2}"  
-                                Aspect="AspectFit" />
-                            <Label 
-                                Text="{Binding Type2}" 
-                                FontAttributes="Bold" 
-                                FontSize="12" 
-                                HorizontalOptions="Center"/>
+                                Aspect="AspectFit"
+                                Source="{Binding TypeImg2}"/>
+                            <Label
+                                FontSize="12"
+                                Style="{StaticResource labelStyle}"
+                                Text="{Binding Type2}"/>
                         </StackLayout>
 
                         <Rectangle 
-                            BackgroundColor="LightGray" 
-                            HeightRequest="40" 
-                            WidthRequest="1">
-                        </Rectangle>
-
+                            Style="{StaticResource  rectangleSeparator}"/>
+                        
                         <StackLayout
                             Orientation="Vertical"
                             Spacing="0">
+                            <Label
+                                FontSize="Large" 
+                                Style="{StaticResource labelStyle}"
+                                Text="{Binding Height, StringFormat='{0:F1}m'}"/>
                             <Label 
-                                Text="{Binding Height ,StringFormat='0,{0:0}m'}" 
-                                FontAttributes="Bold" FontSize="Large" 
-                                HorizontalOptions="Center"/>
-                            <Label 
-                                Text="TAILLE" 
-                                FontAttributes="Bold" 
                                 FontSize="12" 
-                                HorizontalOptions="Center"/>
+                                Style="{StaticResource labelStyle}"
+                                Text="TAILLE"/>
                         </StackLayout>
                     </FlexLayout>
 
@@ -116,100 +130,86 @@
                             Orientation="Horizontal"
                             Padding="0,0,0,10">
                             <Label 
-                                HorizontalOptions="StartAndExpand" 
-                                Text="PV"/>
-                            <AbsoluteLayout
-                                HorizontalOptions="Start">
-                                <BoxView 
-                                    AbsoluteLayout.LayoutBounds="0,0"  
-                                    HeightRequest="20" 
-                                    WidthRequest="220"  
-                                    BackgroundColor="LightGray" 
-                                    CornerRadius="16" />
-                                <BoxView 
-                                    AbsoluteLayout.LayoutBounds="0,7.5" 
-                                    HeightRequest="5" 
-                                    WidthRequest="{Binding HP}" 
-                                    BackgroundColor="{Binding BackgroundColorByType}" 
-                                    CornerRadius="16"  />
-                            </AbsoluteLayout>
+                                HorizontalOptions="Start" 
+                                Text="PV :"/>
                             <Label 
+                                Style="{StaticResource labelStyle}"
                                 Text="{Binding HP}"/>
+                            <AbsoluteLayout
+                                HorizontalOptions="EndAndExpand">
+                                <BoxView 
+                                    Style="{StaticResource boxViewBackground}"/>
+                                <BoxView 
+                                    Style="{StaticResource boxViewValue}" 
+                                    WidthRequest="{Binding HP}"/>
+                            </AbsoluteLayout>
                         </StackLayout>
 
                         <StackLayout
                             Orientation="Horizontal"
                             Padding="0,0,0,10">
                             <Label 
-                                HorizontalOptions="StartAndExpand"
-                                Text="Attaque"/>
-                            <AbsoluteLayout 
-                                HorizontalOptions="Start">
-                                <BoxView 
-                                    AbsoluteLayout.LayoutBounds="0,0"  
-                                    HeightRequest="20" WidthRequest="220" 
-                                    BackgroundColor="LightGray" 
-                                    CornerRadius="16" />
-                                <BoxView 
-                                    AbsoluteLayout.LayoutBounds="0,7.5" 
-                                    HeightRequest="5" 
-                                    WidthRequest="{Binding Attack}" 
-                                    BackgroundColor="{Binding BackgroundColorByType}" 
-                                    CornerRadius="16" />
-                            </AbsoluteLayout>
-                            <Label 
+                                HorizontalOptions="Start"
+                                Text="Attaque :"/>
+                            <Label
+                                Style="{StaticResource labelStyle}"
                                 Text="{Binding Attack}"/>
+                            <AbsoluteLayout 
+                                HorizontalOptions="EndAndExpand">
+                                <BoxView 
+                                    Style="{StaticResource boxViewBackground}"/>
+                                <BoxView 
+                                    Style="{StaticResource boxViewValue}"
+                                    WidthRequest="{Binding Attack}"/>
+                            </AbsoluteLayout>
                         </StackLayout>
 
                         <StackLayout
                             Orientation="Horizontal"
                             Padding="0,0,0,10">
                             <Label
-                                HorizontalOptions="StartAndExpand" 
-                                Text="Defense"/>
+                                HorizontalOptions="Start" 
+                                Text="Defense : "/>
+                            <Label
+                                Style="{StaticResource labelStyle}"
+                                Text="{Binding Defense}"/>
                             <AbsoluteLayout 
-                                HorizontalOptions="Start">
+                                HorizontalOptions="EndAndExpand">
                                 <BoxView 
-                                    AbsoluteLayout.LayoutBounds="0,0" 
-                                    HeightRequest="20" 
-                                    WidthRequest="220"  
-                                    BackgroundColor="LightGray" 
-                                    CornerRadius="16" />
+                                    Style="{StaticResource boxViewBackground}"/>
                                 <BoxView 
-                                    AbsoluteLayout.LayoutBounds="0,7.5" 
-                                    HeightRequest="5" 
-                                    WidthRequest="{Binding Defense}" 
-                                    BackgroundColor="{Binding BackgroundColorByType }" 
-                                    CornerRadius="16"  />
+                                    Style="{StaticResource boxViewValue}"
+                                    WidthRequest="{Binding Defense}"/>
                             </AbsoluteLayout>
-                            <Label Text="{Binding Defense}"/>
                         </StackLayout>
 
                         <StackLayout
                             Orientation="Horizontal"
                             Padding="0,0,0,10">
                             <Label 
-                                HorizontalOptions="StartAndExpand" 
-                                Text="Vitesse"/>
+                                HorizontalOptions="Start" 
+                                Text="Vitesse :"/>
+                            <Label
+                                Style="{StaticResource labelStyle}"
+                                Text="{Binding Speed}"/>
                             <AbsoluteLayout 
-                                HorizontalOptions="Start">
+                                HorizontalOptions="EndAndExpand">
                                 <BoxView 
-                                    AbsoluteLayout.LayoutBounds="0,0"  
-                                    HeightRequest="20" 
-                                    WidthRequest="220"  
-                                    BackgroundColor="LightGray" 
-                                    CornerRadius="16" />
+                                    Style="{StaticResource boxViewBackground}"/>
                                 <BoxView 
-                                    AbsoluteLayout.LayoutBounds="0,7.5" 
-                                    HeightRequest="5" 
-                                    WidthRequest="{Binding Speed}" 
-                                    BackgroundColor="{Binding BackgroundColorByType}"  
-                                    CornerRadius="16" />
+                                    Style="{StaticResource boxViewValue}" 
+                                    WidthRequest="{Binding Speed}"/>
                             </AbsoluteLayout>
-                            <Label Text="{Binding Speed}"/>
                         </StackLayout>
                     </FlexLayout>
-                    <Button x:Name="deleteButton" Text="Supprimer le pokemon" Clicked="OnDeleteButtonClicked" HorizontalOptions="Center" CornerRadius="16"></Button>
+
+                    <Button 
+                        x:Name="deleteButton"
+                        Clicked="OnDeleteButtonClicked"
+                        CornerRadius="16"
+                        HorizontalOptions="Center"
+                        Text="Supprimer le pokemon"/>
+
                 </StackLayout>
             </Frame>
         </FlexLayout>

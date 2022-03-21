@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <SelectedDevice>3eme_tel</SelectedDevice>
-    <ActiveDebugProfile>3eme_tel</ActiveDebugProfile>
-    <DefaultDevice>3eme_tel</DefaultDevice>
+    <SelectedDevice>Xiaomi Redmi Note 8 Pro</SelectedDevice>
+    <ActiveDebugProfile>Xiaomi Redmi Note 8 Pro</ActiveDebugProfile>
+    <DefaultDevice>pixel_3_-_api_30</DefaultDevice>
   </PropertyGroup>
 </Project>

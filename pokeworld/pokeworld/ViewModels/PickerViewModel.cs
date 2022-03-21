@@ -8,11 +8,13 @@ namespace pokeworld.ViewModels
     {
         public List<String> TypeList { get; set; }
 
+        /*
+         * Constructeur qui apelle la fonction qui retourne tous les types.
+         */
         public PickerViewModel()
         {
             TypeList = GetTypes();
         }
-
         public List<String> GetTypes()
         {
             var types = new List<String>()
@@ -40,5 +42,5 @@ namespace pokeworld.ViewModels
             return types;
         }
     }
-    
+
 }

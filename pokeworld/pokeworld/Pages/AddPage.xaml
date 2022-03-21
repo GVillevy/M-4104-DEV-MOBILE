@@ -3,102 +3,97 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="pokeworld.Pages.AddPage"
              Shell.NavBarIsVisible="False">
-    <StackLayout>
-        <Image 
-            x:Name="selectionImage"
-            Source="ajout.png"
-            BackgroundColor="White"
-            VerticalOptions="Center"
-            WidthRequest="100">
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer
-                    NumberOfTapsRequired="1" 
-                    Tapped="Handle_Clicked"/>
-            </Image.GestureRecognizers>
-        </Image>
 
-        <Entry 
-            x:Name="nomPokemon"
-            Placeholder="Nom"/>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="sliderStyle" TargetType="Slider">
+                <Setter Property="BackgroundColor" Value="LightGray"/>
+                <Setter Property="HeightRequest" Value="18"/>
+                <Setter Property="MaximumTrackColor" Value="Black"/>
+                <Setter Property="Minimum" Value="0"/>
+                <Setter Property="MinimumTrackColor" Value="#F08030"/>
+                <Setter Property="ThumbColor" Value="Black"/>
+                <Setter Property="WidthRequest" Value="100"/>
+            </Style>
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-        <Picker 
-            x:Name="type1Pokemon"
-            ItemsSource="{Binding TypeList}"
-            Title="Type1"/>
-        <Picker 
-            x:Name="type2Pokemon"
-            ItemsSource="{Binding TypeList}"
-            Title="Type2"/>
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <Image 
+                x:Name="selectionImage"
+                BackgroundColor="White"
+                Source="ajout.png"
+                VerticalOptions="Center"
+                WidthRequest="100">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="Handle_Clicked"
+                        NumberOfTapsRequired="1"/>
+                </Image.GestureRecognizers>
+            </Image>
 
-        <Entry 
-            x:Name="heightPokemon"
-            Placeholder="Hauteur"/>
-        <Entry 
-            x:Name="weightPokemon"
-            Placeholder="Poids"/>
-    <Label
-            FontAttributes="Bold"
-            FontSize="Medium"
-            Text="PV : "/>
-<Slider
-            x:Name="HP"
-            BackgroundColor="LightGray"
-            Maximum="200"
-            MaximumTrackColor="Black"
-            Minimum="0"
-            MinimumTrackColor="#F08030"
-            HeightRequest="15"
-            ThumbColor="Black"
-            WidthRequest="100"/>
-
-<Label
-            FontAttributes="Bold"
-            FontSize="Medium"
-            Text="Attaque : "/>
-<Slider
-            x:Name="Attack"
-            BackgroundColor="LightGray"
-            Maximum="134"
-            MaximumTrackColor="Black"
-            Minimum="0"
-            MinimumTrackColor="#F08030"
-            HeightRequest="15"
-            ThumbColor="Black"
-            WidthRequest="100"/>
-<Label
-            FontAttributes="Bold"
-            FontSize="Medium"
-            Text="Defense : "/>
-<Slider
-            x:Name="Defense"
-            BackgroundColor="LightGray"
-            Maximum="180"
-            MaximumTrackColor="Black"
-            Minimum="0"
-            MinimumTrackColor="#F08030"
-            HeightRequest="15"
-            ThumbColor="Black"
-            WidthRequest="100"/>
-
-<Label
-            FontAttributes="Bold"
-            FontSize="Medium"
-            Text="Vitesse : "/>
-<Slider
-            x:Name="Speed"
-            BackgroundColor="LightGray"
-            Maximum="180"
-            MaximumTrackColor="Black"
-            Minimum="0"
-            MinimumTrackColor="#F08030"
-            HeightRequest="15"
-            ThumbColor="Black"
-            WidthRequest="100"/>
-
-<Button 
-            x:Name="newButton" 
-            Clicked="OnNewButtonClicked"
-            Text="Ajouter pokémon">
-</Button>
-</StackLayout>
+            <Entry 
+                x:Name="nomPokemon"
+                Placeholder="Nom"/>
+           
+            <Picker 
+                x:Name="type1Pokemon"
+                ItemsSource="{Binding TypeList}"
+                Title="Type1"/>
+            <Picker 
+                x:Name="type2Pokemon"
+                ItemsSource="{Binding TypeList}"
+                Title="Type2"/>
+            
+            <Entry 
+                x:Name="heightPokemon"
+                Placeholder="Hauteur"/>
+            <Entry 
+                x:Name="weightPokemon"
+                Placeholder="Poids"/>
+            
+            <Label
+                Style="{StaticResource labelStyle}"
+                Text="PV : "/>
+            <Slider
+                x:Name="HP"   
+                Maximum="200"
+                Style="{StaticResource sliderStyle}"/>
+            
+            <Label
+                Style="{StaticResource labelStyle}"
+                Text="Attaque : "/>
+            <Slider
+                x:Name="Attack"
+                Maximum="134"
+                Style="{StaticResource sliderStyle}"/>
+            
+            <Label
+                Style="{StaticResource labelStyle}"
+                Text="Defense : "/>
+            <Slider
+                x:Name="Defense"
+                Maximum="180"
+                Style="{StaticResource sliderStyle}"/>
+            
+            <Label
+                Style="{StaticResource labelStyle}"
+                Text="Vitesse : "/>
+            <Slider
+                x:Name="Speed"
+                Maximum="180"
+                Style="{StaticResource sliderStyle}"/>
+            
+            <Button 
+                x:Name="newButton" 
+                Clicked="OnNewButtonClicked"
+                Text="Ajouter pokémon"/>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

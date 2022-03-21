@@ -1,10 +1,11 @@
 ﻿using SQLite;
-using System;
-using System.Collections.Generic;
 
 namespace pokeworld.Models
 {
     [Table("Pokemon")]
+    /*
+     * Class qui représente notre model de nos pokemon avec ses caractéristiques
+     */
     public class PokemonModel
     {
         [PrimaryKey, AutoIncrement]
